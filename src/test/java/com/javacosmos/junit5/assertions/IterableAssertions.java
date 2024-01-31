@@ -1,4 +1,4 @@
-package com.javacosmos.assertions;
+package com.javacosmos.junit5.assertions;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertIterableEquals;
