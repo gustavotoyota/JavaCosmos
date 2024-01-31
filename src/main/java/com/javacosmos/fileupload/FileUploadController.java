@@ -1,8 +1,9 @@
-package com.javacosmos.controllers;
+package com.javacosmos.fileupload;
 
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -75,7 +76,13 @@ public class FileUploadController {
   @ResponseBody
   public ResponseEntity<Resource> serveFile(@PathVariable String filename) throws IOException {
     Path filePath = Paths.get(UPLOAD_DIR).resolve(filename);
-    Resource file = new UrlResource(filePath.toUri());
+    var uri = filePath.toUri();
+
+    if (uri == null) {
+      return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+    }
+
+    Resource file = new UrlResource(uri);
 
     if (file.exists()) {
       return ResponseEntity.ok()
