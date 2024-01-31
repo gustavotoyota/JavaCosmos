@@ -2,6 +2,7 @@ package com.javacosmos.junit5.assertions;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNotSame;
 import static org.junit.jupiter.api.Assertions.assertNull;
@@ -48,5 +49,10 @@ public class IdentityAssertions {
     String s1 = new String("abc");
     String s2 = new String("abc");
     assertNotSame(s1, s2);
+  }
+
+  @Test
+  void testInstanceOf() {
+    assertInstanceOf(Object.class, new Object());
   }
 }
