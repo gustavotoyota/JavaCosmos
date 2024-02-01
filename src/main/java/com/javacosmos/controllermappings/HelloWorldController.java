@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class HelloWorldController {
   @GetMapping("/")
   public String get() {
-    return "Hello World! GET method";
+    return "<div>JavaCosmos links:</div>" +
+        "<div><a href=\"/form-auth/test\">Form login</a></div>" +
+        "<div><a href=\"/basic-auth/test\">Basic HTTP auth</a></div>";
   }
 
   @PostMapping("/")
