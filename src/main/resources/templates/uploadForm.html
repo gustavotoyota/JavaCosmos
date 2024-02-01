@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>File Upload and Download</title>
+  </head>
+  <body>
+    <h2>File Upload and Download</h2>
+
+    <!-- Display success or error message -->
+    <div th:if="${message}">
+      <p th:text="${message}" style="color: green; font-weight: bold"></p>
+    </div>
+
+    <!-- File Upload Form -->
+    <form
+      th:action="@{/files/upload}"
+      method="post"
+      enctype="multipart/form-data"
+    >
+      <label for="file">Choose file:</label>
+      <input
+        type="file"
+        id="file"
+        name="file"
+        accept=".txt, .pdf, .doc, .docx"
+      />
+
+      <br /><br />
+
+      <button type="submit">Upload</button>
+    </form>
+
+    <hr />
+
+    <!-- List of Uploaded Files -->
+    <h3>Uploaded Files:</h3>
+    <ul>
+      <li th:each="fileName : ${fileNames}">
+        <a th:href="@{${fileName}}" th:text="${fileName}"></a>
+      </li>
+    </ul>
+  </body>
+</html>
