@@ -1,0 +1,29 @@
+version: '3.8'
+services:
+  postgres:
+    image: postgres:16.1
+    container_name: postgres
+    restart: always
+    environment:
+      POSTGRES_DB: javacosmos
+      POSTGRES_USER: postgres_user
+      POSTGRES_PASSWORD: postgres_password
+    ports:
+      - '5432:5432'
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data
+      - ./postgres-init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  mongo:
+    image: mongo:7.0.5
+    container_name: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_DATABASE: javacosmos
+      MONGO_INITDB_ROOT_USERNAME: mongo_user
+      MONGO_INITDB_ROOT_PASSWORD: mongo_password
+    ports:
+      - '27017:27017'
+    volumes:
+      - ./mongo_data:/data/db
+      - ./mongo-init.js:/docker-entrypoint-initdb.d/init.js

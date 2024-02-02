@@ -1,8 +1,8 @@
-package com.javacosmos.jpa;
+package com.javacosmos.database.hibernate;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 
-public interface UserRepository extends JpaRepository<UserEntity, String> {
+public interface JpaUserRepository extends JpaRepository<JpaUserEntity, String> {
   UserDetails findByUsername(String username);
 }

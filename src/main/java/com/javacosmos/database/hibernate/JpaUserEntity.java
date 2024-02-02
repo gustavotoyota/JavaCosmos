@@ -1,4 +1,4 @@
-package com.javacosmos.jpa;
+package com.javacosmos.database.hibernate;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
-public class UserEntity {
+public class JpaUserEntity {
   @Id
   @GeneratedValue(strategy = GenerationType.UUID)
   private String id;

@@ -31,3 +31,7 @@ build/
 
 ### VS Code ###
 .vscode/
+
+/mongo_data
+
+/postgres_data
