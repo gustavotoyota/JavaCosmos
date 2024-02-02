@@ -9,11 +9,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class FormAuthController {
   @GetMapping("/login")
   public String login() {
-    return "form-auth/login";
+    return "form-auth/login.html";
   }
 
   @GetMapping("/test")
   public String test() {
-    return "form-auth/test";
+    return "form-auth/test.html";
   }
 }

@@ -12,6 +12,12 @@ public class HelloWorldController {
   @GetMapping("/")
   public String get() {
     return "<div>JavaCosmos links:</div>" +
+        "<br/>" +
+        "<div><a href=\"/jsp\">JSP example</a></div>" +
+        "<div><a href=\"/thymeleaf\">Thymeleaf example</a></div>" +
+        "<br/>" +
+        "<div><a href=\"/files\">File upload</a></div>" +
+        "<br/>" +
         "<div><a href=\"/form-auth/test\">Form login</a></div>" +
         "<div><a href=\"/basic-auth/test\">Basic HTTP auth</a></div>";
   }

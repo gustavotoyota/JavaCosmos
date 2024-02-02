@@ -9,6 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class BasicAuthController {
   @GetMapping("/test")
   public String test() {
-    return "basic-auth/test";
+    return "basic-auth/test.html";
   }
 }

@@ -1,5 +1,13 @@
 package com.javacosmos.fileupload;
 
+import java.io.IOException;
+import java.nio.file.FileAlreadyExistsException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.http.HttpHeaders;
@@ -18,21 +26,13 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.io.IOException;
-import java.nio.file.FileAlreadyExistsException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.List;
-import java.util.stream.Collectors;
-
 @Controller
 @RequestMapping("/files")
 public class FileUploadController {
   private static final String UPLOAD_DIR = "src/main/resources/uploads";
 
   // List uploaded files
-  @GetMapping("")
+  @GetMapping
   public String listUploadedFiles(Model model) throws IOException {
     List<String> fileNames = Files.walk(Paths.get(UPLOAD_DIR))
         .filter(Files::isRegularFile)
@@ -42,9 +42,8 @@ public class FileUploadController {
         .collect(Collectors.toList());
 
     model.addAttribute("fileNames", fileNames);
-    model.addAttribute("message", "Welcome to the File Upload and Download Demo!");
 
-    return "uploadForm";
+    return "file-upload/file-upload.html";
   }
 
   @PostMapping("/upload")
