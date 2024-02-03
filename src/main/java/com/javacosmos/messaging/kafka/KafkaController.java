@@ -1,4 +1,4 @@
-package com.javacosmos.kafka;
+package com.javacosmos.messaging.kafka;
 
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;

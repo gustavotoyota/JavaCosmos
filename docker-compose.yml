@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   postgres:
-    image: postgres:16.1
+    image: postgres:16.1-alpine
     container_name: postgres
     restart: always
     environment:
@@ -27,6 +27,13 @@ services:
     volumes:
       - ./mongo_data:/data/db
       - ./mongo-init.js:/docker-entrypoint-initdb.d/init.js
+
+  rabbitmq:
+    image: rabbitmq:3.12.12-management-alpine
+    container_name: rabbitmq
+    ports:
+      - 5672:5672
+      - 15672:15672
 
   zoo1:
     image: confluentinc/cp-zookeeper:7.5.3
