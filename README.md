@@ -27,6 +27,7 @@ Then you just have to run the application, either through your IDE or by using t
 - Spring Security
   - Basic HTTP Authentication
   - Form-based Authentication
+- Spring AOP
 - Database technologies
   - Hibernate
     - PostgreSQL
