@@ -1,6 +1,6 @@
 # JavaCosmos - Comprehensive Java Demonstrations
 
-JavaCosmos is a comprehensive structured collection of code demonstrations for technologies essential to Java development. It may be helpful for beginners by learning from clear and practical examples, while advanced users may benefit from quick overviews or experimentation with various technologies.
+JavaCosmos is a comprehensive structured collection of code demonstrations for technologies essential to Java development. It may be helpful to beginners by providing clear and practical examples, while advanced users may benefit from quick overviews or experimentation with various technologies.
 
 ## Setting up JavaCosmos
 
@@ -26,15 +26,17 @@ Then you just have to run the application, either through your IDE or by using t
 - Spring Security
   - Basic HTTP Authentication
   - Form-based Authentication
-- Database technologies:
+- Database technologies
   - Hibernate
-  - PostgreSQL
+    - PostgreSQL
   - MongoDB
-- Kafka
+- Messaging technologies
+  - Kafka
+  - RabbitMQ
 - Template engines
-  - JSP
   - Thymeleaf
-- Testing libraries:
+  - JSP
+- Testing libraries
   - JUnit
   - Mockito
 - Lombok
