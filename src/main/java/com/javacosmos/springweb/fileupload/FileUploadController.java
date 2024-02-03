@@ -1,4 +1,4 @@
-package com.javacosmos.fileupload;
+package com.javacosmos.springweb.fileupload;
 
 import java.io.IOException;
 import java.nio.file.FileAlreadyExistsException;
