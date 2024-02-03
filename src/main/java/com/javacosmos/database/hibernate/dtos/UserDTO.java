@@ -1,4 +1,4 @@
-package com.javacosmos.database.mongo.domain.user;
+package com.javacosmos.database.hibernate.dtos;
 
 public record UserDTO(
         String username) {

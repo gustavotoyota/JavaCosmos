@@ -11,22 +11,22 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.javacosmos.database.mongo.domain.product.Product;
-import com.javacosmos.database.mongo.domain.product.ProductDTO;
-import com.javacosmos.database.mongo.services.ProductService;
+import com.javacosmos.database.mongo.dtos.ProductDTO;
+import com.javacosmos.database.mongo.model.Product;
+import com.javacosmos.database.mongo.services.MongoProductService;
 
 @RestController
-@RequestMapping("/api/product")
-public class ProductController {
-  private ProductService service;
+@RequestMapping("/mongo/product")
+public class MongoProductController {
+  private MongoProductService service;
 
-  public ProductController(ProductService service) {
+  public MongoProductController(MongoProductService service) {
     this.service = service;
   }
 
   @PostMapping
-  public ResponseEntity<Product> insert(@RequestBody ProductDTO productDTO) {
-    Product product = service.insert(productDTO);
+  public ResponseEntity<Product> create(@RequestBody ProductDTO productDTO) {
+    Product product = service.create(productDTO);
 
     return ResponseEntity.ok(product);
   }
@@ -36,6 +36,13 @@ public class ProductController {
     List<Product> categories = service.getAll();
 
     return ResponseEntity.ok(categories);
+  }
+
+  @GetMapping("/{id}")
+  public ResponseEntity<Product> getById(@PathVariable("id") String id) {
+    Product product = service.getById(id).get();
+
+    return ResponseEntity.ok(product);
   }
 
   @PutMapping("/{id}")

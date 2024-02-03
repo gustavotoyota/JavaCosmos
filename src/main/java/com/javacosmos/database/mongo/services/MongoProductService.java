@@ -1,41 +1,37 @@
 package com.javacosmos.database.mongo.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import com.javacosmos.database.mongo.domain.category.Category;
-import com.javacosmos.database.mongo.domain.category.exceptions.CategoryNotFoundException;
-import com.javacosmos.database.mongo.domain.product.Product;
-import com.javacosmos.database.mongo.domain.product.ProductDTO;
-import com.javacosmos.database.mongo.domain.product.exceptions.ProductNotFoundException;
-import com.javacosmos.database.mongo.repositories.ProductRepository;
+import com.javacosmos.database.mongo.dtos.ProductDTO;
+import com.javacosmos.database.mongo.exceptions.ProductNotFoundException;
+import com.javacosmos.database.mongo.model.Product;
+import com.javacosmos.database.mongo.repositories.MongoProductRepository;
 
 import lombok.NonNull;
 
 @Service
-public class ProductService {
-  private ProductRepository repository;
-  private CategoryService categoryService;
+public class MongoProductService {
+  private MongoProductRepository repository;
 
-  public ProductService(ProductRepository repository, CategoryService categoryService) {
+  public MongoProductService(MongoProductRepository repository) {
     this.repository = repository;
-    this.categoryService = categoryService;
   }
 
-  public Product insert(ProductDTO productDTO) {
-    Category category = categoryService.getById(productDTO.categoryId())
-        .orElseThrow(CategoryNotFoundException::new);
-
+  public Product create(ProductDTO productDTO) {
     Product newProduct = new Product(productDTO);
-
-    newProduct.setCategory(category);
 
     return repository.save(newProduct);
   }
 
   public List<Product> getAll() {
     return repository.findAll();
+  }
+
+  public Optional<Product> getById(@NonNull String id) {
+    return repository.findById(id);
   }
 
   public Product update(@NonNull String id, ProductDTO productDTO) {
@@ -58,9 +54,8 @@ public class ProductService {
       product.setPrice(productDTO.price());
     }
 
-    if (productDTO.categoryId() != null) {
-      this.categoryService.getById(productDTO.categoryId())
-          .ifPresent(product::setCategory);
+    if (productDTO.categoryId() != null && !productDTO.categoryId().isEmpty()) {
+      product.setCategoryId(productDTO.categoryId());
     }
 
     repository.save(product);

@@ -5,23 +5,25 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import com.javacosmos.database.mongo.domain.category.Category;
-import com.javacosmos.database.mongo.domain.category.CategoryDTO;
-import com.javacosmos.database.mongo.domain.category.exceptions.CategoryNotFoundException;
-import com.javacosmos.database.mongo.repositories.CategoryRepository;
+import com.javacosmos.database.mongo.dtos.CategoryDTO;
+import com.javacosmos.database.mongo.exceptions.CategoryNotFoundException;
+import com.javacosmos.database.mongo.model.Category;
+import com.javacosmos.database.mongo.repositories.MongoCategoryRepository;
 
 import lombok.NonNull;
 
 @Service
-public class CategoryService {
-  private CategoryRepository repository;
+public class MongoCategoryService {
+  private MongoCategoryRepository repository;
 
-  public CategoryService(CategoryRepository categoryRepository) {
+  public MongoCategoryService(MongoCategoryRepository categoryRepository) {
     this.repository = categoryRepository;
   }
 
-  public Category insert(CategoryDTO categoryDTO) {
-    return repository.save(new Category(categoryDTO));
+  public Category create(CategoryDTO categoryDTO) {
+    Category category = new Category(categoryDTO);
+
+    return repository.save(category);
   }
 
   public List<Category> getAll() {

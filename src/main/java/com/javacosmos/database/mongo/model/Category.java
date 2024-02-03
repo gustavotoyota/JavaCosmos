@@ -1,7 +1,9 @@
-package com.javacosmos.database.mongo.domain.category;
+package com.javacosmos.database.mongo.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import com.javacosmos.database.mongo.dtos.CategoryDTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

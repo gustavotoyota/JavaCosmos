@@ -1,14 +1,20 @@
 package com.javacosmos.lombok;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+
 import lombok.Cleanup;
-import java.io.*;
 
 public class CleanupExample {
-  public static void main(String[] args) throws IOException {
+  public void demonstration() throws FileNotFoundException, IOException {
     @Cleanup
-    InputStream in = new FileInputStream(args[0]);
+    InputStream in = new FileInputStream("in.txt");
     @Cleanup
-    OutputStream out = new FileOutputStream(args[1]);
+    OutputStream out = new FileOutputStream("out.txt");
 
     byte[] b = new byte[10000];
 
@@ -26,10 +32,10 @@ public class CleanupExample {
  * 
  * 
  * public class CleanupExample {
- * public static void main(String[] args) throws IOException {
- * InputStream in = new FileInputStream(args[0]);
+ * public void demonstration() throws FileNotFoundException, IOException {
+ * InputStream in = new FileInputStream("in.txt");
  * try {
- * OutputStream out = new FileOutputStream(args[1]);
+ * OutputStream out = new FileOutputStream("out.txt");
  * try {
  * byte[] b = new byte[10000];
  * while (true) {

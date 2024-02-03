@@ -12,22 +12,22 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.javacosmos.database.mongo.domain.category.Category;
-import com.javacosmos.database.mongo.domain.category.CategoryDTO;
-import com.javacosmos.database.mongo.services.CategoryService;
+import com.javacosmos.database.mongo.dtos.CategoryDTO;
+import com.javacosmos.database.mongo.model.Category;
+import com.javacosmos.database.mongo.services.MongoCategoryService;
 
 @RestController
-@RequestMapping("/api/category")
-public class CategoryController {
-  private CategoryService service;
+@RequestMapping("/mongo/category")
+public class MongoCategoryController {
+  private MongoCategoryService service;
 
-  public CategoryController(CategoryService service) {
+  public MongoCategoryController(MongoCategoryService service) {
     this.service = service;
   }
 
   @PostMapping
-  public ResponseEntity<Category> insert(@RequestBody CategoryDTO categoryDTO) {
-    Category category = service.insert(categoryDTO);
+  public ResponseEntity<Category> create(@RequestBody CategoryDTO categoryDTO) {
+    Category category = service.create(categoryDTO);
 
     return ResponseEntity.ok(category);
   }
@@ -37,6 +37,13 @@ public class CategoryController {
     List<Category> categories = service.getAll();
 
     return ResponseEntity.ok(categories);
+  }
+
+  @GetMapping("/{id}")
+  public ResponseEntity<Category> getById(@PathVariable("id") String id) {
+    Category category = service.getById(id).get();
+
+    return ResponseEntity.ok(category);
   }
 
   @PutMapping("/{id}")

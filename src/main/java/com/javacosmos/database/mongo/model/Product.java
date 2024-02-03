@@ -1,9 +1,9 @@
-package com.javacosmos.database.mongo.domain.product;
+package com.javacosmos.database.mongo.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import com.javacosmos.database.mongo.domain.category.Category;
+import com.javacosmos.database.mongo.dtos.ProductDTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,12 +23,13 @@ public class Product {
   private String description;
   private String ownerId;
   private Integer price;
-  private Category category;
+  private String categoryId;
 
   public Product(ProductDTO productDTO) {
     this.title = productDTO.title();
     this.description = productDTO.description();
     this.ownerId = productDTO.ownerId();
     this.price = productDTO.price();
+    this.categoryId = productDTO.categoryId();
   }
 }
