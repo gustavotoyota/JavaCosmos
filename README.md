@@ -1,16 +1,44 @@
 # JavaCosmos - Comprehensive Java Demonstrations
 
-JavaCosmos is a comprehensive structured collection of code demonstrations for technologies essential to Java development. It can be useful for beginners to learn from clear and practical examples, while advanced users may find it useful for quick overviews of various technologies.
+JavaCosmos is a comprehensive structured collection of code demonstrations for technologies essential to Java development. It may be helpful for beginners by learning from clear and practical examples, while advanced users may benefit from quick overviews or experimentation with various technologies.
+
+## Setting up JavaCosmos
+
+In order to run JavaCosmos, first you must start the services using docker-compose:
+
+```
+docker-compose up -d
+```
+
+(The `-d` above is used to detach the services from the command line, making them run in the background.)
+
+Then you just have to run the application, either through your IDE or by using the following command:
+
+```
+./mvnw spring-boot:run
+```
 
 ## Features currently covered by JavaCosmos
 
 - Spring Boot
+- Spring Web
+  - Spring MVC
 - Spring Security
+  - Basic HTTP Authentication
+  - Form-based Authentication
+- Database technologies:
+  - Hibernate
+  - PostgreSQL
+  - MongoDB
+- Kafka
+- Template engines
+  - JSP
+  - Thymeleaf
+- Testing libraries:
+  - JUnit
+  - Mockito
 - Lombok
-- JUnit
-- Mockito
 - File uploads and downloads
-- Thymeleaf
 
 ## License
 
