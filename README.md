@@ -23,6 +23,7 @@ Then you just have to run the application, either through your IDE or by using t
 - Spring Boot
 - Spring Web
   - Spring MVC
+  - Spring WebFlux
 - Spring Security
   - Basic HTTP Authentication
   - Form-based Authentication

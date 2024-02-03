@@ -1,4 +1,4 @@
-package com.javacosmos.controllermappings;
+package com.javacosmos.springweb.controllermappings;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
