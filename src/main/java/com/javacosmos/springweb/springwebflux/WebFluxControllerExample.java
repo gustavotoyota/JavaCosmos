@@ -12,7 +12,7 @@ import reactor.core.publisher.Mono;
 
 @RestController
 @RequestMapping("/webflux")
-public class WebFluxController {
+public class WebFluxControllerExample {
   @GetMapping("/mono")
   public Mono<String> monoExample() {
     return Mono.just("Hello JavaCosmos! This is a mono endpoint.");

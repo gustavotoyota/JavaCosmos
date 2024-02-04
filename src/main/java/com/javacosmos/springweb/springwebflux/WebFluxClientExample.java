@@ -9,10 +9,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
 @Service
-public class WebFluxSubscriber implements ApplicationListener<ApplicationReadyEvent>, Ordered {
+public class WebFluxClientExample implements ApplicationListener<ApplicationReadyEvent>, Ordered {
   private WebClient webClient;
 
-  public WebFluxSubscriber(WebClient.Builder webClientBuilder) {
+  public WebFluxClientExample(WebClient.Builder webClientBuilder) {
     this.webClient = webClientBuilder.baseUrl("http://localhost:8080").build();
   }
 
