@@ -41,6 +41,7 @@ Then you just have to run the application, either through your IDE or by using t
 - Testing libraries
   - JUnit
   - Mockito
+- Swagger
 - Lombok
 - File uploads and downloads
 
