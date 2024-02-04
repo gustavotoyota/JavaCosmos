@@ -1,4 +1,4 @@
-package com.javacosmos.templateengines.jsp;
+package com.javacosmos.springweb.templateengines.jsp;
 
 import java.io.IOException;
 

@@ -1,4 +1,4 @@
-package com.javacosmos.templateengines.thymeleaf;
+package com.javacosmos.springweb.templateengines.thymeleaf;
 
 import java.io.IOException;
 
