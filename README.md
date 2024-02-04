@@ -24,6 +24,7 @@ Then you just have to run the application, either through your IDE or by using t
 - Spring Web
   - Spring MVC
   - Spring WebFlux
+  - GraphQL
 - Spring Security
   - Basic HTTP Authentication
   - Form-based Authentication
