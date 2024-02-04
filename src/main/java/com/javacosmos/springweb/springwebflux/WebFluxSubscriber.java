@@ -1,4 +1,4 @@
-package com.javacosmos.springweb.webflux;
+package com.javacosmos.springweb.springwebflux;
 
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.ApplicationListener;

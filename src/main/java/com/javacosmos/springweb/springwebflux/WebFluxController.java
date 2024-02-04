@@ -1,4 +1,4 @@
-package com.javacosmos.springweb.webflux;
+package com.javacosmos.springweb.springwebflux;
 
 import java.time.Duration;
 
