@@ -6,7 +6,7 @@ import lombok.Getter;
  * @Getter is a shortcut to create getter methods.
  */
 
-public class GetterExample {
+public class GetterAnnotation {
   private @Getter String name;
 
   public void demonstration() {

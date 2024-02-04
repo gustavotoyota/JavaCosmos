@@ -1,4 +1,4 @@
-package com.javacosmos.lombok.classonly;
+package com.javacosmos.lombok.classonlyannotations;
 
 import lombok.EqualsAndHashCode;
 
@@ -7,7 +7,7 @@ import lombok.EqualsAndHashCode;
  */
 
 @EqualsAndHashCode
-public class EqualsAndHashCodeExample {
+public class EqualsAndHashCodeAnnotation {
   private String name;
   private double price;
 

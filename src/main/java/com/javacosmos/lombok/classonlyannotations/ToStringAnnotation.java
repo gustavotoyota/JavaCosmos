@@ -1,4 +1,4 @@
-package com.javacosmos.lombok.classonly;
+package com.javacosmos.lombok.classonlyannotations;
 
 import lombok.ToString;
 
@@ -7,7 +7,7 @@ import lombok.ToString;
  */
 
 @ToString
-public class ToStringExample {
+public class ToStringAnnotation {
   private String field1;
   private int field2;
 

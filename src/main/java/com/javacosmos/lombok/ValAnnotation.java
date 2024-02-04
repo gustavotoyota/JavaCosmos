@@ -8,7 +8,7 @@ import lombok.val;
  * It has been replaced by final var.
  */
 
-public class ValExample {
+public class ValAnnotation {
   public void demonstration() {
     // val is a final variable
     val name = "Java Cosmos";

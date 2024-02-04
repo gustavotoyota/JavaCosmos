@@ -9,7 +9,7 @@ import lombok.Getter;
  * a value once, the first time this getter is called, and cache it from then on.
  */
 
-public class LazyGetterExample {
+public class LazyGetterAnnotation {
   private final @Getter(lazy = true) String name = "Lombok";
 
   public void demonstration() {

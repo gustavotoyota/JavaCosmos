@@ -1,4 +1,4 @@
-package com.javacosmos.lombok.classonly;
+package com.javacosmos.lombok.classonlyannotations;
 
 import lombok.Builder;
 
@@ -7,12 +7,12 @@ import lombok.Builder;
  */
 
 @Builder
-public class BuilderExample {
+public class BuilderAnnotation {
   private String name;
   private double price;
 
   public void demonstration() {
-    BuilderExample.builder()
+    BuilderAnnotation.builder()
         .name(name)
         .price(price)
         .build(); // Building the object using the builder pattern

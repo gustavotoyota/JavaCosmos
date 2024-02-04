@@ -6,7 +6,7 @@ import lombok.NonNull;
  * @NonNull is a shortcut to create not null validation.
  */
 
-public class NonNullExample {
+public class NonNullAnnotation {
   private @NonNull String name;
 
   public void demonstration(@NonNull String arg) {

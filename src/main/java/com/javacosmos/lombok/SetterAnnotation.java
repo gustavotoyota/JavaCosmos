@@ -6,7 +6,7 @@ import lombok.Setter;
  * @Setter is a shortcut to create setter methods.
  */
 
-public class SetterExample {
+public class SetterAnnotation {
   private @Setter String name;
 
   public void demonstration() {

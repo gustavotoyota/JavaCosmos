@@ -1,4 +1,4 @@
-package com.javacosmos.lombok.classonly;
+package com.javacosmos.lombok.classonlyannotations;
 
 import lombok.Data;
 import lombok.NonNull;
@@ -11,7 +11,7 @@ import lombok.NonNull;
  */
 
 @Data
-public class DataExample {
+public class DataAnnotation {
   private @NonNull String name;
   private int age;
 
@@ -42,6 +42,6 @@ public class DataExample {
 
     // Constructor
 
-    new DataExample("John"); // Only required fields in constructor
+    new DataAnnotation("John"); // Only required fields in constructor
   }
 }

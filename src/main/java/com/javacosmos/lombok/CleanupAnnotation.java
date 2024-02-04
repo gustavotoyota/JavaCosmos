@@ -9,7 +9,7 @@ import java.io.OutputStream;
 
 import lombok.Cleanup;
 
-public class CleanupExample {
+public class CleanupAnnotation {
   public void demonstration() throws FileNotFoundException, IOException {
     @Cleanup
     InputStream in = new FileInputStream("in.txt");

@@ -1,4 +1,4 @@
-package com.javacosmos.lombok.classonly;
+package com.javacosmos.lombok.classonlyannotations;
 
 import lombok.Value;
 
@@ -18,7 +18,7 @@ import lombok.Value;
  */
 
 @Value
-public class ValueExample {
+public class ValueAnnotation {
   private String name;
   private int age;
 
@@ -44,6 +44,6 @@ public class ValueExample {
 
     // Constructor
 
-    new ValueExample("John", 30); // All fields in constructor
+    new ValueAnnotation("John", 30); // All fields in constructor
   }
 }
