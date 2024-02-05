@@ -2,44 +2,25 @@ package com.javacosmos.springsecurity;
 
 import static org.springframework.security.config.Customizer.withDefaults;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-/*
- * This class uses the newer Spring Security 5.0+ configuration style.
- */
+import com.javacosmos.springsecurity.jwtauth.JwtAuthSecurityFilter;
 
 @Configuration
 @EnableWebSecurity
-public class SecurityConfig {
+public class SecurityFilterChainConfig {
   @Bean
-  public PasswordEncoder passwordEncoder() {
-    return new BCryptPasswordEncoder();
-  }
-
-  @Bean
-  public InMemoryUserDetailsManager userDetailsService() {
-    UserDetails user1 = User.withUsername("user")
-        .password(passwordEncoder().encode("password"))
-        .roles("USER")
-        .build();
-
-    return new InMemoryUserDetailsManager(user1);
-  }
-
-  @Bean
-  @Order(1)
-  SecurityFilterChain httpBasicAuthFilterChain(HttpSecurity http) throws Exception {
+  @Order(1) // Required to ensure the order of the SecurityFilterChains
+  // Only the first SecurityFilterChain that matches the request will be used
+  SecurityFilterChain basicAuthFilterChain(HttpSecurity http) throws Exception {
     return http
         .securityMatcher("/basic-auth/**")
         .authorizeHttpRequests(authorize -> authorize
@@ -50,7 +31,7 @@ public class SecurityConfig {
 
   @Bean
   @Order(2)
-  SecurityFilterChain formLoginFilterChain(HttpSecurity http) throws Exception {
+  SecurityFilterChain formAuthFilterChain(HttpSecurity http) throws Exception {
     return http
         .securityMatcher("/form-auth/**")
         .authorizeHttpRequests(auth -> auth
@@ -67,9 +48,27 @@ public class SecurityConfig {
         .build();
   }
 
+  @Autowired
+  private JwtAuthSecurityFilter jwtAuthSecurityFilter;
+
   @Bean
   @Order(3)
-  SecurityFilterChain disableCSRF(HttpSecurity http) throws Exception {
+  SecurityFilterChain jwtAuthFilterChain(HttpSecurity http) throws Exception {
+    return http
+        .csrf(csrf -> csrf.disable())
+        .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+        .securityMatcher("/jwt-auth/**")
+        .authorizeHttpRequests(auth -> auth
+            .requestMatchers("/jwt-auth/register", "/jwt-auth/login").permitAll()
+            .requestMatchers("/jwt-auth/admin").hasRole("ADMIN")
+            .anyRequest().authenticated())
+        .addFilterBefore(jwtAuthSecurityFilter, UsernamePasswordAuthenticationFilter.class)
+        .build();
+  }
+
+  @Bean
+  @Order(4)
+  SecurityFilterChain disableCSRFByDefault(HttpSecurity http) throws Exception {
     return http
         .csrf(csrf -> csrf.disable())
         .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
