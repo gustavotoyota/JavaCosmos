@@ -8,42 +8,36 @@ import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 
 @Aspect
 @Component
 public class AspectExample {
-  // Pointcut reference example
-  //
-  // @Pointcut("execution(* com.javacosmos..*(..))")
-  // public void pointcut() {
-  // }
-  //
-  // @Before("pointcut()")
-  // public void beforeAdvice(JoinPoint joinPoint) {
-  // System.out.println("AOP log: method " + joinPoint.getSignature().getName() +
-  // "
-  // (Before advice)");
-  // }
+  // Required if using both AOP and filters: AOP does not work with filters
+  // We use this pointcut to exclude filters from AOP
+  @Pointcut("this(org.springframework.web.filter.GenericFilterBean)")
+  private void genericFilterBeanImpl() {
+  }
 
-  @Before(value = "execution(* com.javacosmos..*(..))")
+  @Before(value = "execution(* com.javacosmos..*(..)) && !genericFilterBeanImpl()")
   public void beforeAdvice(JoinPoint joinPoint) {
     System.out.println("AOP log: method " + joinPoint.getSignature().getName() + " (Before advice)");
   }
 
-  @After(value = "execution(* com.javacosmos..*(..))")
+  @After(value = "execution(* com.javacosmos..*(..)) && !genericFilterBeanImpl()")
   public void afterAdvice(JoinPoint joinPoint) {
     System.out.println("AOP log: method " + joinPoint.getSignature().getName() + " (After advice)");
   }
 
-  @AfterReturning(value = "execution(* com.javacosmos..*(..))", returning = "result")
+  @AfterReturning(value = "execution(* com.javacosmos..*(..)) && !genericFilterBeanImpl()", returning = "result")
   public void afterReturningAdvice(JoinPoint joinPoint, Object result) {
     System.out
         .println(
             "AOP log: method " + joinPoint.getSignature().getName() + " (After returning advice). Result: " + result);
   }
 
-  @AfterThrowing(value = "execution(* com.javacosmos..*(..))", throwing = "exception")
+  @AfterThrowing(value = "execution(* com.javacosmos..*(..)) && !genericFilterBeanImpl()", throwing = "exception")
   public void afterThrowingAdvice(JoinPoint joinPoint, Throwable exception) {
     System.out
         .println(
@@ -51,7 +45,7 @@ public class AspectExample {
                 + exception);
   }
 
-  @Around(value = "execution(* com.javacosmos..*(..))")
+  @Around(value = "execution(* com.javacosmos..*(..)) && !genericFilterBeanImpl()")
   public Object aroundAdvice(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
     System.out
         .println(
