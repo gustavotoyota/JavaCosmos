@@ -10,9 +10,9 @@ import org.springframework.web.context.WebApplicationContext;
 @Configuration
 public class BeanScopes {
   @Bean
-  // Annotation not necessary, as it's the default scope.
   // @Scope(ConfigurableBeanFactory.SCOPE_SINGLETON)
   // Or @Scope("singleton")
+  // Annotation not necessary, as it's the default scope.
   public Object singletonBean() {
     // Only one instance of the bean is created, and it's shared by all the
     // application contexts.
