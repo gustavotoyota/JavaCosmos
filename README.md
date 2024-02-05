@@ -26,8 +26,9 @@ Then you just have to run the application, either through your IDE or by using t
   - Spring WebFlux
   - GraphQL
 - Spring Security
-  - Basic HTTP Authentication
-  - Form-based Authentication
+  - Basic HTTP authentication
+  - Form-based authentication
+  - JWT authentication
 - Spring AOP
 - Database technologies
   - Hibernate
