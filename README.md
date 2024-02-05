@@ -18,6 +18,12 @@ Then you just have to run the application, either through your IDE or by using t
 ./mvnw spring-boot:run
 ```
 
+After that, you can access the application at:
+
+```
+http://localhost:8080
+```
+
 ## Features currently covered by JavaCosmos
 
 - Spring Boot
