@@ -6,34 +6,36 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
+@RequestMapping("/")
 public class HelloWorldController {
-  @GetMapping("/")
+  @GetMapping
   public String get() {
     return "home-page/home-page.html";
   }
 
-  @PostMapping("/")
+  @PostMapping
   @ResponseBody
   public String post() {
     return "Hello World! POST method";
   }
 
-  @PutMapping("/")
+  @PutMapping
   @ResponseBody
   public String put() {
     return "Hello World! PUT method";
   }
 
-  @DeleteMapping("/")
+  @DeleteMapping
   @ResponseBody
   public String delete() {
     return "Hello World! DELETE method";
   }
 
-  @PatchMapping("/")
+  @PatchMapping
   @ResponseBody
   public String patch() {
     return "Hello World! PATCH method";
